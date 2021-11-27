@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy
 
-df = pd.read_excel('1 StatSspace/result_dem3_col1.xlsx', index_col='region')
+df = pd.read_excel('1 StatSspace/result_zen-jil_col1.xlsx', index_col='region')
 a = df.index
 d = {
     'time': ['1 квартал 2015', '2 квартал 2015', '3 квартал 2015', '4 квартал 2015', '1 квартал 2016', '2 квартал 2016',
@@ -23,22 +23,6 @@ for i in df:
                 d[a[j]].append(0)
             else:
                 d[a[j]] = [0]
-for i in range(len(a)):
-    r = []
-    for j in range(0, len(d[a[i]]) - 2, 3):
-        t = 3
-        k = 0
-        for h in range(j, j + 3):
-            if d[a[i]][h] != 0:
-                k += d[a[i]][h]
-            else:
-                t -= 1
-        if t != 0:
-            r.append(k / t)
-        else:
-            r.append(0)
-    d[a[i]] = r
-
 if numpy.NAN in d:
     d.pop(numpy.NAN)
 for i in d:
@@ -49,11 +33,11 @@ for i in d:
             while k > -1 and d[i][k] == 0:
                 k -= 1
             if k != -1:
-                r.append((d[i][j] - d[i][k]) / d[i][k] * 100)
+                r.append((d[i][j] - d[i][k]) / d[i][k] * 10000)
             else:
                 r.append(100)
         d[i] = r
 df_1 = pd.DataFrame(d)
-df_1.to_excel('браки.xlsx', index=False)
+df_1.to_excel('жилье_1.xlsx', index=False)
 # df_1.plot()
 # plt.show()

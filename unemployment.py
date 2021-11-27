@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy
 
-df = pd.read_excel('1 StatSspace/result_dem3_col1.xlsx', index_col='region')
+df = pd.read_excel('1 StatSspace/result_trud2_col1.xlsx', index_col='region')
 a = df.index
 d = {
     'time': ['1 квартал 2015', '2 квартал 2015', '3 квартал 2015', '4 квартал 2015', '1 квартал 2016', '2 квартал 2016',
@@ -49,11 +49,11 @@ for i in d:
             while k > -1 and d[i][k] == 0:
                 k -= 1
             if k != -1:
-                r.append((d[i][j] - d[i][k]) / d[i][k] * 100)
+                r.append((d[i][j] - d[i][k]) / d[i][k] * 1000)
             else:
                 r.append(100)
         d[i] = r
 df_1 = pd.DataFrame(d)
-df_1.to_excel('браки.xlsx', index=False)
+df_1.to_excel('безработица.xlsx', index=False)
 # df_1.plot()
 # plt.show()
