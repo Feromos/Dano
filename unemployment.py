@@ -54,6 +54,6 @@ for i in d:
                 r.append(100)
         d[i] = r
 df_1 = pd.DataFrame(d)
-df_1.to_excel('безработица.xlsx', index=False)
+df_1.to_excel('Tables/безработица.xlsx', index=False)
 # df_1.plot()
 # plt.show()

@@ -53,6 +53,6 @@ for i in d:
                 r.append(100)
         d[i] = r
 df_1 = pd.DataFrame(d)
-df_1.to_excel('число браков в процентах в кварталах.xlsx', index=False)
+df_1.to_excel('Tables/индекс цен.xlsx', index=False)
 # df_1.plot()
 # plt.show()

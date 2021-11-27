@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy
 
-df = pd.read_excel('1 StatSspace/result_dem3_col1.xlsx', index_col='region')
+df = pd.read_excel('1 StatSspace/result_dem3_col3.xlsx', index_col='region')
 a = df.index
 d = {
     'time': ['1 квартал 2015', '2 квартал 2015', '3 квартал 2015', '4 квартал 2015', '1 квартал 2016', '2 квартал 2016',
@@ -54,6 +54,6 @@ for i in d:
                 r.append(100)
         d[i] = r
 df_1 = pd.DataFrame(d)
-df_1.to_excel('Tables/браки.xlsx', index=False)
+df_1.to_excel('Tables/разводы.xlsx', index=False)
 # df_1.plot()
 # plt.show()

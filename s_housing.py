@@ -38,6 +38,6 @@ for i in d:
                 r.append(100)
         d[i] = r
 df_1 = pd.DataFrame(d)
-df_1.to_excel('жилье_2.xlsx', index=False)
+df_1.to_excel('Tables/жилье_2.xlsx', index=False)
 # df_1.plot()
 # plt.show()
