@@ -49,7 +49,7 @@ for i in d:
             while k > -1 and d[i][k] == 0:
                 k -= 1
             if k != -1:
-                r.append((d[i][j] - d[i][k]) / d[i][k] * 100)
+                r.append((d[i][j] - d[i][k]) / d[i][k] * 30)
             else:
                 r.append(100)
         d[i] = r
