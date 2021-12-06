@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy
 
-df = pd.read_excel('1 StatSspace/result_trud2_col1.xlsx', index_col='region')
+df = pd.read_excel('1 StatSspace/result_zen_fix_col1.xlsx', index_col='region')
 a = ['1 квартал 2015', '2 квартал 2015', '3 квартал 2015', '4 квартал 2015', '1 квартал 2016', '2 квартал 2016',
      '3 квартал 2016', '4 квартал 2016', '1 квартал 2017', '2 квартал 2017', '3 квартал 2017',
      '4 квартал 2017', '1 квартал 2018', '2 квартал 2018', '3 квартал 2018', '4 квартал 2018',
@@ -29,6 +29,6 @@ for i in range(0, len(df.columns), 3):
 if numpy.NAN in d:
     d.pop(numpy.NAN)
 df_1 = pd.DataFrame(d)
-df_1.to_excel('Tables/безработица по кварталам.xlsx', index=False)
+df_1.to_excel('Tables/стоимость потребительской корзины по кварталам.xlsx', index=False)
 # df_1.plot()
 # plt.show()
