@@ -57,7 +57,10 @@ d1.pop('г.Севастополь')
 df_3 = pd.DataFrame(d1)
 df_4 = pd.DataFrame(d2)
 for i in d2:
-    d1[i] = d1[i] + [numpy.NAN] + d2[i]
+    if i == 'time':
+        d1[i] = d1[i] + ['разводы'] + d2[i]
+    else:
+        d1[i] = d1[i] + [numpy.NAN] + d2[i]
 for i in df_3:
     m = 0
     if i != 'time':
@@ -65,6 +68,6 @@ for i in df_3:
             if df_3[i][j] != 0 and df_3[i][j] != 0:
                 m += 1
         d1[i] += [numpy.NAN, df_3[i][:m + 1].corr(df_4[i][:m + 1])]
-d1['time'] += [numpy.NAN, 'Корреляция']
+d1['time'] += ['безработица', 'Корреляция']
 df_5 = pd.DataFrame(d1)
 df_5.to_excel('Tables/корреляция_безработица_разводы.xlsx', index=False)
