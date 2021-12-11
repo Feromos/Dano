@@ -25,6 +25,6 @@ for i in df_1:
                 d1[a[j]] = [0]
 if numpy.NAN in d1:
     d1.pop(numpy.NAN)
-df_3 = pd.DataFrame(d1)
+df_3 = pd.DataFrame({'г.Москва': d1['г.Москва']})
 df_3.plot()
 plt.show()
