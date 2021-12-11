@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 from numpy import log
 import numpy
 
-df_1 = pd.read_excel('Tables/разводы по кварталам.xlsx', index_col='region')
-df_2 = pd.read_excel('Tables/безработица по кварталам.xlsx', index_col='region')
+df_1 = pd.read_excel('Tables/количество разводов на 1 брак.xlsx', index_col='region')
+df_2 = pd.read_excel('Tables/количество потребительских корзин за зарплату.xlsx', index_col='region')
 a = df_1.index
 d1 = {
     'time': ['1 квартал 2015', '2 квартал 2015', '3 квартал 2015', '4 квартал 2015', '1 квартал 2016', '2 квартал 2016',
@@ -66,6 +66,6 @@ for i in df_3:
             else:
                 break
         d1[i] += [numpy.NAN, df_3[i][:m].corr(df_4[i][:m])]
-d1['time'] += ['безработица', 'Корреляция']
+d1['time'] += ['корзины', 'Корреляция']
 df_5 = pd.DataFrame(d1)
-df_5.to_excel('Tables/корреляция_безработица_разводы.xlsx', index=False)
+df_5.to_excel('Tables/корреляция_корзины_разводы(на 1 брак).xlsx', index=False)
