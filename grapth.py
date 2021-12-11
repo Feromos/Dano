@@ -2,29 +2,40 @@ import csv
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy
+import scipy.stats
+import stats
 
-df_1 = pd.read_excel('Tables/разводы по кварталам.xlsx', index_col='region')
-a = df_1.index
-d1 = {
-    'time': ['1 квартал 2015', '2 квартал 2015', '3 квартал 2015', '4 квартал 2015', '1 квартал 2016', '2 квартал 2016',
-             '3 квартал 2016', '4 квартал 2016', '1 квартал 2017', '2 квартал 2017', '3 квартал 2017',
-             '4 квартал 2017', '1 квартал 2018', '2 квартал 2018', '3 квартал 2018', '4 квартал 2018',
-             '1 квартал 2019', '2 квартал 2019', '3 квартал 2019', '4 квартал 2019', '1 квартал 2020', '2 квартал 2020',
-             '3 квартал 2020', '4 квартал 2020', ]}
+plt.style.use('ggplot')
+df_1 = pd.read_excel('Tables/корреляция_безработица_разводы.xlsx', index_col='time')
+x = []
+y = []
 for i in df_1:
-    for j in range(len(a)):
-        if df_1[i][j] > 0:
-            if a[j] in d1:
-                d1[a[j]].append(df_1[i][j])
+    if i != 'time':
+        t1, t2, m1, m2 = 0, 0, 0, 0
+        f = True
+        for j in range(len(df_1[i]) - 2):
+            if j == 24:
+                f = False
             else:
-                d1[a[j]] = [df_1[i][j]]
-        else:
-            if a[j] in d1:
-                d1[a[j]].append(0)
-            else:
-                d1[a[j]] = [0]
-if numpy.NAN in d1:
-    d1.pop(numpy.NAN)
-df_3 = pd.DataFrame({'г.Москва': d1['г.Москва']})
-df_3.plot()
+                if f:
+                    if df_1[i][j] != 0:
+                        m1 += df_1[i][j]
+                        t1 += 1
+                else:
+                    if df_1[i][j] != 0:
+                        m2 += df_1[i][j]
+                        t2 += 1
+        x.append(m1 / t1)
+        y.append(m2 / t2)
+x = numpy.asarray(x)
+y = numpy.asarray(y)
+slope, intercept, r, *__ = scipy.stats.linregress(x, y)
+line = f'Regression line: y={intercept:.2f}+{slope:.2f}x, r={r:.2f}'
+fig, ax = plt.subplots()
+ax.plot(x, y, linewidth=0, marker='s', label='Data points')
+ax.plot(x, intercept + slope * x, label=line)
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+ax.legend(facecolor='white')
+plt.title('Корреляция разводов и безработицы')
 plt.show()
