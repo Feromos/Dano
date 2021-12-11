@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 import numpy
 
 df_1 = pd.read_excel('Tables/разводы по кварталам.xlsx', index_col='region')
-df_2 = pd.read_excel('Tables/индекс цен по кварталам.xlsx', index_col='region')
 a = df_1.index
 d1 = {
     'time': ['1 квартал 2015', '2 квартал 2015', '3 квартал 2015', '4 квартал 2015', '1 квартал 2016', '2 квартал 2016',
