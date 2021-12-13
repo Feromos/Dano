@@ -2,7 +2,7 @@ import pandas as pd
 from statsmodels.tsa.stattools import adfuller
 from numpy import log
 
-df = pd.read_excel('Tables/количество потребительских корзин за зарплату.xlsx', index_col='region')
+df = pd.read_excel('Tables/безработица по кварталам.xlsx', index_col='region')
 # df = pd.read_excel('Tables/индекс цен по кварталам.xlsx', index_col='region')
 # df = pd.read_excel('Tables/разводы по кварталам.xlsx', index_col='region')
 # df = pd.read_excel('Tables/безработица по кварталам.xlsx', index_col='region')
