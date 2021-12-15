@@ -8,15 +8,23 @@ import stats
 plt.style.use('ggplot')
 df_1 = pd.read_excel('Tables/разводы.xlsx', index_col='time')
 df_2 = pd.read_excel('Tables/корзины за зарплату.xlsx', index_col='time')
-a = ['Республика Ингушетия', 'Чеченская Республика', 'Республика Дагестан', 'Республика Тыва']
-b = ['Магаданская область', 'Мурманская область', 'Камчатский край', 'Ямало-Ненецкий авт.округ', 'Тюменская область',
-     'Сахалинская область', 'Чукотский авт.округ']
+d = {'регрессия': df_1.columns}
+for i in df_1:
+    x = df_1[i][1:49]
+    y = df_2[i][1:49]
+    x = numpy.asarray(x)
+    y = numpy.asarray(y)
+    slope, intercept, r, *__ = scipy.stats.linregress(x, y)
+    d[i] = [slope]
+# df_3 = pd.DataFrame(d)
+# df_3.to_excel('Tables/регрессия разводов и доходов.xlsx', index=False)
 x = []
 y = []
-for i in b:
-    for j in range(1, 49):
-        x.append(df_1[i][j])
-        y.append(df_2[i][j])
+print(d)
+for i in df_1:
+    if d[i][0] <= -0.4:
+        x.append(sum(df_1[i][1:49]) / 48)
+        y.append(sum(df_2[i][1:49]) / 48)
 x = numpy.asarray(x)
 y = numpy.asarray(y)
 slope, intercept, r, *__ = scipy.stats.linregress(x, y)

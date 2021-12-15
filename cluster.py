@@ -2,13 +2,13 @@
 from scipy.cluster.hierarchy import linkage, dendrogram
 import matplotlib.pyplot as plt
 import pandas as pd
+import numpy
 
 # Создаем датафрейм
-seeds_df = pd.read_csv("http://qps.ru/jNZUT")
-
+seeds_df = pd.read_excel('Tables/средние значения.xlsx')
 # Исключаем информацию об образцах зерна, сохраняем для дальнейшего использования
-varieties = list(seeds_df.pop('grain_variety'))
-
+varieties = list(seeds_df.pop('region'))
+seeds_df.pop('безработица')
 # Извлекаем измерения как массив NumPy
 samples = seeds_df.values
 
