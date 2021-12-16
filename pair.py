@@ -3,8 +3,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy
 
-df_1 = pd.read_excel('Tables/зарплата.xlsx', index_col='time')
-df_2 = pd.read_excel('Tables/корзины.xlsx', index_col='time')
+df_1 = pd.read_excel('Tables/разводы.xlsx', index_col='time')
+df_2 = pd.read_excel('Tables/браки.xlsx', index_col='time')
 d = {'time': df_1.index}
 for i in range(len(df_1.columns)):
     for j in range(len(df_1[df_1.columns[i]])):
@@ -17,6 +17,6 @@ for i in range(len(df_1.columns)):
             d[df_1.columns[i]] = [k]
 
 df_3 = pd.DataFrame(d)
-df_3.to_excel('Tables/корзины за зарплату.xlsx', index=False)
+df_3.to_excel('Tables/разводы на 1 брак.xlsx', index=False)
 # df_1.plot()
 # plt.show()

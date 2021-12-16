@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy
 
-df = pd.read_excel('1 StatSspace/result_dem3_col7.xlsx', index_col='region')
+df = pd.read_excel('1 StatSspace/result_dem3_col5.xlsx', index_col='region')
 d = {'time': df.columns}
 for i in range(len(df.index)):
     for j in range(len(df.columns) - 9):
@@ -33,6 +33,6 @@ for i in d:
                     d[i][j] = m / (2 * t - k - 2)
 d['time'] = d['time'][:len(d['time']) - 9]
 df_1 = pd.DataFrame(d)
-df_1.to_excel('Tables/разводы.xlsx', index=False)
+df_1.to_excel('Tables/браки.xlsx', index=False)
 # df_1.plot()
 # plt.show()
