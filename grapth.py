@@ -6,8 +6,8 @@ import scipy.stats
 import stats
 
 plt.style.use('ggplot')
-df_1 = pd.read_excel('Tables/разводы.xlsx', index_col='time')
-df_2 = pd.read_excel('Tables/корзины за зарплату.xlsx', index_col='time')
+df_1 = pd.read_excel('Tables/чистые разводы.xlsx', index_col='time')
+df_2 = pd.read_excel('Tables/чистые корзины.xlsx', index_col='time')
 a = ['Республика Ингушетия', 'Чеченская Республика', 'Республика Тыва']
 b = ['Магаданская область', 'Мурманская область', 'Камчатский край', 'Ямало-Ненецкий авт.округ', 'Тюменская область',
      'Сахалинская область', 'Чукотский авт.округ']
@@ -18,10 +18,17 @@ d = ['Еврейская авт.область', 'Новосибирская о�
      'Амурская область']
 x = []
 y = []
-for i in d:
-    for j in range(1, 49):
-        x.append(df_1[i][j])
-        y.append(df_2[i][j])
+t = 0
+for i in df_1:
+    if i != 'time' and i != 'г.Москва':
+        if 'Un' in i:
+            t += 1
+            if t > 1:
+                break
+        if t>0:
+            x.append(sum(df_1[i][:49]) / 49)
+            y.append(sum(df_2[i][:49]) / 49)
+
 x = numpy.asarray(x)
 y = numpy.asarray(y)
 slope, intercept, r, *__ = scipy.stats.linregress(x, y)

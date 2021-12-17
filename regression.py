@@ -6,8 +6,8 @@ import scipy.stats
 import stats
 
 plt.style.use('ggplot')
-df_1 = pd.read_excel('Tables/разводы.xlsx', index_col='time')
-df_2 = pd.read_excel('Tables/корзины за зарплату.xlsx', index_col='time')
+df_1 = pd.read_excel('Tables/чистые разводы.xlsx', index_col='time')
+df_2 = pd.read_excel('Tables/чистые корзины.xlsx', index_col='time')
 d = {'регрессия': df_1.columns}
 for i in df_1:
     x = df_1[i][1:49]
@@ -22,7 +22,6 @@ x = []
 y = []
 print(d)
 for i in df_1:
-    if d[i][0] <= -0.4:
         x.append(sum(df_1[i][1:49]) / 48)
         y.append(sum(df_2[i][1:49]) / 48)
 x = numpy.asarray(x)

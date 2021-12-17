@@ -5,10 +5,13 @@ import pandas as pd
 import numpy
 
 # Создаем датафрейм
-seeds_df = pd.read_excel('Tables/средние значения.xlsx')
+seeds_df = pd.read_excel('Tables/гы2.0.xlsx')
 # Исключаем информацию об образцах зерна, сохраняем для дальнейшего использования
 varieties = list(seeds_df.pop('region'))
 seeds_df.pop('безработица')
+seeds_df.pop('разводы')
+seeds_df.pop('браки')
+seeds_df.pop('корзины за зарплату')
 # Извлекаем измерения как массив NumPy
 samples = seeds_df.values
 
