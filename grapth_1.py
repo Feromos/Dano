@@ -32,7 +32,6 @@ for i in range(len(df['region'])):
             if m < df['корзины за зарплату'][i]:
                 m = df['корзины за зарплату'][i]
                 n = df['region'][i]
-            print(df['region'][i])
             x.append(df['разводы'][i])
             y.append(df['корзины за зарплату'][i])
             if df['region'][i] == 'Ярославская область':
